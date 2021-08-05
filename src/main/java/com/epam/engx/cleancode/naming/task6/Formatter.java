@@ -10,16 +10,16 @@ public class Formatter {
 
     public String formatKeyValue(String key, String value) {
         String content = key + UNDERSCORE + value;
-        String minuses = repeat(MINUS, content.length());
-        return PLUS +  minuses + PLUS + "\n"
+        String minuses = repeatSymbol(MINUS, content.length());
+        return PLUS + minuses + PLUS + "\n"
                 + PIPE + content + PIPE + "\n"
                 + PLUS + minuses + PLUS + "\n";
     }
 
-    private String repeat(String symbol, int times) {
-        String result = "";
+    private String repeatSymbol(String symbol, int times) {
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < times; i++)
-            result += symbol;
-        return result;
+            result.append(symbol);
+        return result.toString();
     }
 }

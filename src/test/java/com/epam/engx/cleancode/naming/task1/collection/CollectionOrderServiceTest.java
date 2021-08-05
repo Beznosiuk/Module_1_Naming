@@ -1,7 +1,7 @@
 package com.epam.engx.cleancode.naming.task1.collection;
 
 import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Message;
-import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Submitable;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Submittable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,7 +13,7 @@ public class CollectionOrderServiceTest {
 
     private CollectionOrderServiceTestHelper helper = new CollectionOrderServiceTestHelper();
 
-    private final Submitable collectOrderService = helper.getService();
+    private final Submittable collectOrderService = helper.getService();
 
     private final NotificationManagerMock notificationManagerMock = new NotificationManagerMock();
 

@@ -1,10 +1,10 @@
 package com.epam.engx.cleancode.naming.task5.thirdpartyjar;
 
-public class InvalidDirectoryException extends RuntimeException{
+public class InvalidDirectoryException extends RuntimeException {
     String message;
-    public InvalidDirectoryException(String s) {
-        super();
-        this.message = s;
+
+    public InvalidDirectoryException(String message) {
+        this.message = message;
     }
 
     @Override

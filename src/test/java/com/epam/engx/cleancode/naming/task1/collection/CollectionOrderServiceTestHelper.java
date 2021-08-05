@@ -1,7 +1,7 @@
 package com.epam.engx.cleancode.naming.task1.collection;
 
 import com.epam.engx.cleancode.naming.task1.thirdpartyjar.CollectionService;
-import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Submitable;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Submittable;
 
 public class CollectionOrderServiceTestHelper {
 
@@ -9,15 +9,15 @@ public class CollectionOrderServiceTestHelper {
         return new CollectOrderService();
     }
 
-    public void submit(Submitable collectOrderService) {
+    public void submit(Submittable collectOrderService) {
         ((CollectOrderService) collectOrderService).submitOrder(new OrderDummy());
     }
 
-    public void setNotificationManager(NotificationManagerMock notificationManagerMock, Submitable collectOrderService) {
-        ((CollectOrderService) collectOrderService).setSer2(notificationManagerMock);
+    public void setNotificationManager(NotificationManagerMock notificationManagerMock, Submittable collectOrderService) {
+        ((CollectOrderService) collectOrderService).setNotificationManager(notificationManagerMock);
     }
 
-    public void setCollectionService(Submitable collectOrderService, CollectionService collectionServiceStub) {
-        ((CollectOrderService) collectOrderService).setSer1(collectionServiceStub);
+    public void setCollectionService(Submittable collectOrderService, CollectionService collectionServiceStub) {
+        ((CollectOrderService) collectOrderService).setCollectionService(collectionServiceStub);
     }
 }

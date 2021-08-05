@@ -12,28 +12,24 @@ public class PropertyUtil {
     private static final Logger LOGGER = Logger.getLogger(PropertyUtil.class.getName());
     private static final String CONFIG_FILE_NAME = "config.properties";
 
-    private PropertyUtil() {
-
-    }
-
     public static String loadProperty(String property) {
-        Properties props = loadProperties();
-        return props.getProperty(property);
+        Properties properties = loadProperties();
+        return properties.getProperty(property);
     }
 
     private static Properties loadProperties() {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        Properties props = new Properties();
-        loadPropertiesFileFromClassLoader(classLoader, props);
-        return props;
+        Properties properties = new Properties();
+        loadPropertiesFileFromClassLoader(classLoader, properties);
+        return properties;
     }
 
-    private static void loadPropertiesFileFromClassLoader(ClassLoader classLoader, Properties props) {
-        try (InputStream is = classLoader.getResourceAsStream(CONFIG_FILE_NAME)) {
-            if (is == null) {
+    private static void loadPropertiesFileFromClassLoader(ClassLoader classLoader, Properties properties) {
+        try (InputStream inputStream = classLoader.getResourceAsStream(CONFIG_FILE_NAME)) {
+            if (inputStream == null) {
                 throw new MissingConfigFileException("Missing properties file...");
             }
-            props.load(is);
+            properties.load(inputStream);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Error occurred while loading properties file", e);
         }

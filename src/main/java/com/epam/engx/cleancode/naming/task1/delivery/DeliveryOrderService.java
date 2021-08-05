@@ -1,30 +1,33 @@
 package com.epam.engx.cleancode.naming.task1.delivery;
 
-import com.epam.engx.cleancode.naming.task1.IOrderService;
-import com.epam.engx.cleancode.naming.task1.thirdpartyjar.*;
+import com.epam.engx.cleancode.naming.task1.OrderService;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.DeliveryService;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.NotDeliverableOrderException;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Order;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.OrderFulfilmentService;
+import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Product;
 
 import java.util.List;
 
-public class DeliveryOrderService implements IOrderService {
+public class DeliveryOrderService implements OrderService {
 
-    private DeliveryService mDeliveryService;
+    private DeliveryService deliveryService;
+    private OrderFulfilmentService orderFulfilmentService;
 
-    private OrderFulfilmentService mOrderFulfilmentService;
+    public void setDeliveryService(DeliveryService deliveryService) {
+        this.deliveryService = deliveryService;
+    }
 
-    public void submitOrder(Order pOrder) {
-        if (mDeliveryService.isDeliverable(pOrder)) {
-            List<Product> products = pOrder.getProducts();
-            mOrderFulfilmentService.fulfilProducts(products);
+    public void setOrderFulfilmentService(OrderFulfilmentService orderFulfilmentService) {
+        this.orderFulfilmentService = orderFulfilmentService;
+    }
+
+    public void submitOrder(Order order) {
+        if (deliveryService.isDeliverable(order)) {
+            List<Product> products = order.getProducts();
+            orderFulfilmentService.fulfilProducts(products);
         } else {
             throw new NotDeliverableOrderException();
         }
-    }
-
-    public void setDeliveryService(DeliveryService pDeliveryService) {
-        this.mDeliveryService = pDeliveryService;
-    }
-
-    public void setOrderFulfilmentService(OrderFulfilmentService pOrderFulfilmentService) {
-        this.mOrderFulfilmentService = pOrderFulfilmentService;
     }
 }

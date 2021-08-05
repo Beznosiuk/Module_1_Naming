@@ -7,13 +7,17 @@ import com.epam.engx.cleancode.naming.task4.thirdpartyjar.CustomerContactDAO;
 
 public class CustomerContactServiceImpl implements CustomerContactService {
 
-    private CustomerContactDAO customerContactDAO;
+    private final CustomerContactDAO customerContactDAO;
 
-    public CustomerContact findCustomerContactDetailsByCustomerId(Long customerId) {
+    public CustomerContactServiceImpl(CustomerContactDAO customerContactDAO) {
+        this.customerContactDAO = customerContactDAO;
+    }
+
+    public CustomerContact findCustomerDetailsById(Long customerId) {
         return customerContactDAO.findById(customerId);
     }
 
-    public void updateCustomerContactDetails(CustomerContact customerContactDetails) {
-        customerContactDAO.update(customerContactDetails);
+    public void updateCustomerDetails(CustomerContact customerContactDetails) {
+        customerContactDAO.updateDetails(customerContactDetails);
     }
 }
