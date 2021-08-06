@@ -6,7 +6,7 @@ import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Message;
 import com.epam.engx.cleancode.naming.task1.thirdpartyjar.NotificationManager;
 import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Order;
 
-public class CollectOrderService implements OrderService {
+public class CollectionOrderService implements OrderService {
 
     private static final int INFO_LEVEL = 4;
     private static final int CRITICAL_LEVEL = 1;
@@ -22,6 +22,7 @@ public class CollectOrderService implements OrderService {
         this.notificationManager = notificationManager;
     }
 
+    @Override
     public void submitOrder(Order order) {
         if (collectionService.isEligibleForCollection(order)) {
             notificationManager.notifyCustomer(Message.READY_FOR_COLLECT, INFO_LEVEL);

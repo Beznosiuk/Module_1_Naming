@@ -4,15 +4,15 @@ package com.epam.engx.cleancode.naming.task5.predicates;
 import com.epam.engx.cleancode.naming.task5.thirdpartyjar.Predicate;
 
 public class FileExtensionsPredicate implements Predicate<String> {
-    private final String[] extensions;
+    private final String[] allowedExtensions;
 
-    public FileExtensionsPredicate(String[] extensions) {
-        this.extensions = extensions;
+    public FileExtensionsPredicate(String[] allowedExtensions) {
+        this.allowedExtensions = allowedExtensions;
     }
 
     @Override
-    public boolean isValidFile(String fileName) {
-        for (String extension : extensions) {
+    public boolean test(String fileName) {
+        for (String extension : allowedExtensions) {
             if (fileName.toLowerCase().endsWith(extension)) {
                 return true;
             }

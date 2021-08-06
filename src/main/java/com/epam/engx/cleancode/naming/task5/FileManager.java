@@ -14,23 +14,23 @@ import java.util.Objects;
 
 public final class FileManager {
 
-    private static final String[] IMAGES_TYPES = {"jpg", "png"};
-    private static final String[] DOCUMENT_TYPES = {"pdf", "doc"};
+    private static final String[] IMAGES_EXTENSIONS = {"jpg", "png"};
+    private static final String[] DOCUMENT_EXTENSIONS = {"pdf", "doc"};
 
     private final String basePath = PropertyUtil.loadProperty("basePath");
 
     public File retrieveFile(String fileName) {
         validateFileType(fileName);
-        final String directoryPath = basePath + File.separator;
+        String directoryPath = basePath + File.separator;
         return Paths.get(directoryPath, fileName).toFile();
     }
 
-    public List<String> images() {
-        return getFilesByPath(basePath, IMAGES_TYPES);
+    public List<String> getAllImages() {
+        return getFilesByPath(basePath, IMAGES_EXTENSIONS);
     }
 
-    public List<String> documentFiles() {
-        return getFilesByPath(basePath, DOCUMENT_TYPES);
+    public List<String> getAllDocumentFiles() {
+        return getFilesByPath(basePath, DOCUMENT_EXTENSIONS);
     }
 
     private void validateFileType(String fileName) {
@@ -44,17 +44,17 @@ public final class FileManager {
     }
 
     private boolean isInvalidImage(String fileName) {
-        FileExtensionsPredicate imageExtensionsPredicate = new FileExtensionsPredicate(IMAGES_TYPES);
-        return !imageExtensionsPredicate.isValidFile(fileName);
+        FileExtensionsPredicate imageExtensionsPredicate = new FileExtensionsPredicate(IMAGES_EXTENSIONS);
+        return !imageExtensionsPredicate.test(fileName);
     }
 
     private boolean isInvalidDocument(String fileName) {
-        FileExtensionsPredicate documentExtensionsPredicate = new FileExtensionsPredicate(DOCUMENT_TYPES);
-        return !documentExtensionsPredicate.isValidFile(fileName);
+        FileExtensionsPredicate documentExtensionsPredicate = new FileExtensionsPredicate(DOCUMENT_EXTENSIONS);
+        return !documentExtensionsPredicate.test(fileName);
     }
 
     private List<String> getFilesByPath(String directoryPath, String[] allowedExtensions) {
-        final FileExtensionsPredicate predicate = new FileExtensionsPredicate(allowedExtensions);
+        FileExtensionsPredicate predicate = new FileExtensionsPredicate(allowedExtensions);
         return Arrays.asList(Objects.requireNonNull(getDirectoryFile(directoryPath).list(getFilenameFilterByPredicate(predicate))));
     }
 
@@ -62,7 +62,7 @@ public final class FileManager {
         return new FilenameFilter() {
             @Override
             public boolean accept(File directoryInstance, String fileName) {
-                return fileExtensionsPredicate.isValidFile(fileName);
+                return fileExtensionsPredicate.test(fileName);
             }
         };
     }

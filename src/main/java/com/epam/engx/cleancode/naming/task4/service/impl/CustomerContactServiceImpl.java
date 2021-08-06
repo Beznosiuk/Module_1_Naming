@@ -13,11 +13,13 @@ public class CustomerContactServiceImpl implements CustomerContactService {
         this.customerContactDAO = customerContactDAO;
     }
 
-    public CustomerContact findCustomerDetailsById(Long customerId) {
+    @Override
+    public CustomerContact findById(Long customerId) {
         return customerContactDAO.findById(customerId);
     }
 
-    public void updateCustomerDetails(CustomerContact customerContactDetails) {
+    @Override
+    public void update(CustomerContact customerContactDetails) {
         customerContactDAO.updateDetails(customerContactDetails);
     }
 }

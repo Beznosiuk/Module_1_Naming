@@ -8,7 +8,7 @@ public class User {
 	private final String name;
 	private final User[] subordinates;
 	private int rating;
-	protected boolean admin;
+	protected boolean isAdmin;
 
 	public User(String name, String dateOfBirth, User[] subordinates) {
 		this.dateOfBirth = dateOfBirth;
@@ -22,7 +22,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [dateOfBirth=" + dateOfBirth + ", name=" + name + ", isAdmin=" + admin + ", subordinates="
+		return "User [dateOfBirth=" + dateOfBirth + ", name=" + name + ", isAdmin=" + isAdmin + ", subordinates="
 				+ Arrays.toString(subordinates) + ", rating=" + rating + "]";
 	}
 }

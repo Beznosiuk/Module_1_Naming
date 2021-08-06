@@ -22,6 +22,7 @@ public class DeliveryOrderService implements OrderService {
         this.orderFulfilmentService = orderFulfilmentService;
     }
 
+    @Override
     public void submitOrder(Order order) {
         if (deliveryService.isDeliverable(order)) {
             List<Product> products = order.getProducts();

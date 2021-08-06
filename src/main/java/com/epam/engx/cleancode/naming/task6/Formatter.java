@@ -2,24 +2,26 @@ package com.epam.engx.cleancode.naming.task6;
 
 public class Formatter {
 
-    private static final String PLUS = "+";
-    private static final String PIPE = "|";
-    private static final String MINUS = "-";
-    private static final String UNDERSCORE = " _ ";
+    private static final String CORNER_SYMBOL = "+";
+    private static final String SIDE_SYMBOL = "|";
+    private static final String HORIZONTAL_BORDER_SYMBOL = "-";
+    private static final String BOTTOM_SPACE_SYMBOL = " _ ";
+    private static final String NEW_LINE = "\n";
 
 
     public String formatKeyValue(String key, String value) {
-        String content = key + UNDERSCORE + value;
-        String minuses = repeatSymbol(MINUS, content.length());
-        return PLUS + minuses + PLUS + "\n"
-                + PIPE + content + PIPE + "\n"
-                + PLUS + minuses + PLUS + "\n";
+        String content = key + BOTTOM_SPACE_SYMBOL + value;
+        String horizontalBorder = generateHorizontalBorder(HORIZONTAL_BORDER_SYMBOL, content.length());
+        return CORNER_SYMBOL + horizontalBorder + CORNER_SYMBOL + NEW_LINE
+                + SIDE_SYMBOL + content + SIDE_SYMBOL + NEW_LINE
+                + CORNER_SYMBOL + horizontalBorder + CORNER_SYMBOL + NEW_LINE;
     }
 
-    private String repeatSymbol(String symbol, int times) {
+    private String generateHorizontalBorder(String symbol, int times) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < times; i++)
+        for (int i = 0; i < times; i++) {
             result.append(symbol);
+        }
         return result.toString();
     }
 }
