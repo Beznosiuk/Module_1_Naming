@@ -5,12 +5,12 @@ public class Formatter {
     private static final String CORNER_SYMBOL = "+";
     private static final String VERTICAL_BORDER_SYMBOL = "|";
     private static final String HORIZONTAL_BORDER_SYMBOL = "-";
-    private static final String BOTTOM_SPACE_SYMBOL = " _ ";
+    private static final String DELIMITER = " _ ";
     private static final String NEW_LINE = "\n";
 
 
     public String formatKeyValue(String key, String value) {
-        String content = key + BOTTOM_SPACE_SYMBOL + value;
+        String content = key + DELIMITER + value;
         String horizontalBorder = generateHorizontalBorder(content.length());
         return CORNER_SYMBOL + horizontalBorder + CORNER_SYMBOL + NEW_LINE
                 + VERTICAL_BORDER_SYMBOL + content + VERTICAL_BORDER_SYMBOL + NEW_LINE
