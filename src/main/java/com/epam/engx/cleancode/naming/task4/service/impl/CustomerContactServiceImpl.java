@@ -20,6 +20,6 @@ public class CustomerContactServiceImpl implements CustomerContactService {
 
     @Override
     public void update(CustomerContact customerContactDetails) {
-        customerContactDAO.updateDetails(customerContactDetails);
+        customerContactDAO.update(customerContactDetails);
     }
 }

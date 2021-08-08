@@ -2,8 +2,8 @@ package com.epam.engx.cleancode.naming.task3;
 
 public class HarshadNumberGenerator {
 
-    final String NEW_LINE = "\n";
-    final int DECIMAL_BASE = 10;
+    private static final String NEW_LINE = "\n";
+    private static final int DECIMAL_BASE = 10;
 
     public String getHarshadNumbersString(long limit) {
         StringBuilder result = new StringBuilder();

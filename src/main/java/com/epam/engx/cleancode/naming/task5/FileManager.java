@@ -25,7 +25,7 @@ public final class FileManager {
         return Paths.get(directoryPath, fileName).toFile();
     }
 
-    public List<String> getAllImages() {
+    public List<String> getAllImagesFiles() {
         return getFilesByPath(basePath, IMAGES_EXTENSIONS);
     }
 

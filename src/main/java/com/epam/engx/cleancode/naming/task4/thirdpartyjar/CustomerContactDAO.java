@@ -3,5 +3,5 @@ package com.epam.engx.cleancode.naming.task4.thirdpartyjar;
 public interface CustomerContactDAO {
     CustomerContact findById(Long customerId);
 
-    void updateDetails(CustomerContact contact);
+    void update(CustomerContact contact);
 }

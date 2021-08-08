@@ -4,5 +4,5 @@ import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Order;
 import com.epam.engx.cleancode.naming.task1.thirdpartyjar.Submittable;
 
 public interface OrderService extends Submittable {
-    void submitOrder(Order Order);
+    void submitOrder(Order order);
 }
